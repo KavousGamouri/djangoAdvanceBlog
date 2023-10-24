@@ -1,0 +1,21 @@
+<div class="single-sidebar-widget popular-post-widget">
+    <h4 class="popular-title">Popular Posts</h4>
+    <div class="popular-post-list">
+        {% if recent_posts %}
+            {% for post in recent_posts %}
+            <div class="single-post-list d-flex flex-row align-items-center">
+                <div class="thumb">
+                    <img class="img-fluid" src="{{ post.image.url }}" alt="">
+                </div>
+                <div class="details">
+                    <a href="{% url 'blog:post_detail' pk=post.id %}"><h6>{{ post.title }}</h6></a>
+                    <p>{{ post.created_date }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No post is available</p>
+        {% endif %}
+
+    </div>
+</div>

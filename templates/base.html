@@ -1,0 +1,19 @@
+{% load static %}
+	<!DOCTYPE html>
+	<html lang="zxx" class="no-js">
+	<head>
+		{% include 'header_links.html' %}
+		</head>
+		<body>
+			{% include 'header.html' %}
+
+            {% block content %}
+
+            {% endblock %}
+
+
+			{% include 'footer.html' %}
+
+			{% include 'footer_links.html' %}
+		</body>
+	</html>

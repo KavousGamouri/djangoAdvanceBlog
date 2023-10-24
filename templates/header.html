@@ -1,0 +1,57 @@
+{% load static %}
+<header id="header">
+    <div class="header-top">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-sm-6 col-6 header-top-left">
+
+                    <ul>
+                        {% if request.user.is_authenticated %}
+                            <li><h6 style="color: white">Welcome {{ request.user.username }}</h6></li>
+                        {% else %}
+                            <li><h6 style="color: white"></h6></li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-sm-6 col-6 header-top-right">
+                    <div class="header-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container main-menu">
+        <div class="row align-items-center justify-content-between d-flex">
+            <div id="logo">
+                <a href="{% url 'blog:index' %}"><img src="{% static 'img/logo.png' %}" alt="" title=""/></a>
+            </div>
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li><a href="{% url 'blog:index' %}">Blog</a></li>
+                    {% if request.user.is_authenticated %}
+                        <li><a href="{% url 'blog:post_create' %}">Add New Post</a></li>
+
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                        <li class="menu-has-children"><a href="">{{ request.user.username }}</a>
+                            <ul>
+                                <li><a href="{% url 'accounts:change_password' %}">Change Password</a></li>
+                                <li><a href="{% url 'accounts:edit_profile' %}">Edit Profile</a></li>
+                                <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                            </ul>
+                    {% else %}
+
+                    <li><a href="{% url 'accounts:login' %}">Login</a></li>
+
+                    {% endif %}
+                    <li><a href="{% url 'blog:contact' %}">Contact</a></li>
+                </ul>
+            </nav><!-- #nav-menu-container -->
+        </div>
+    </div>
+</header><!-- #header -->
